@@ -24,9 +24,7 @@ header {
     padding: 20pt;
 }
 
-.navigation {
-    
-}
+.navigation {}
 
 .navbar {
     display: flex;
@@ -34,15 +32,51 @@ header {
     justify-content: space-around;
     padding-right: 30px;
 }
-.navitem {
-
-}
+.navitem {}
 
 .navlink {
     color: white;
     font-size: 17pt;
     padding-right: 40px;
     text-decoration: none;   
+}
+
+.searchbar {
+    width: 100%;
+    max-width: 500px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px;
+}
+
+.searchbar input {
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+    color: white;
+}
+::placeholder {
+    color: white;
+}
+
+.searchbar button img {
+width: 25px;
+}
+
+.searchbar button {
+border: 0;
+border-radius: 50px;
+width: 60px;
+height: 60px;
+background: none;
+cursor: pointer;
+
 }
 
 
