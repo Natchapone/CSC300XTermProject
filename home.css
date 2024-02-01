@@ -1,5 +1,10 @@
-.container {
+body {
+    margin: 0;
+    padding: 0;
+}
 
+p {
+    margin: 0;
 }
 
 header {
@@ -7,7 +12,35 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 0;
     height: 400px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 30pt;
+    color: lightgray;
+    padding: 20pt;
+}
+
+.navigation {
     
+}
+
+.navbar {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+    padding-right: 30px;
+}
+.navitem {
+
+}
+
+.navlink {
+    color: white;
+    font-size: 17pt;
+    padding-right: 40px;
+    text-decoration: none;
 }
