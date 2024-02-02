@@ -21,7 +21,7 @@ header {
 
 .logo {
     font-size: 30pt;
-    color: lightgray;
+    color: white;
     padding: 20pt;
 }
 
@@ -79,11 +79,18 @@ background: none;
 cursor: pointer;
 }
 
-h1 {
+h1{
     text-align: center;
     color: green;
+}
+h2 {
+    text-align: center;
+    color: white;
     margin: 70px;
-    font-size: 100px;
+    font-size: 70px;
+    border: 10px outset lightgreen;
+    background-color: green;
+    border-radius: 5px;
     
 }
 
