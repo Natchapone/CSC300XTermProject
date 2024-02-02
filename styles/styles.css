@@ -9,7 +9,7 @@ p {
 }
 
 header {
-    background-image: url(images/nicelawn.jpg);
+    background-image: url(../images/nicelawn.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -140,4 +140,5 @@ footer {
 .social {
     display:flex;
     justify-content: flex-end;
+
 }
