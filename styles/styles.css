@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 p {
@@ -9,7 +9,7 @@ p {
 }
 
 header {
-    background-image: url(../images/nicelawn.jpg);
+    background-image: url(pictures/nicelawn.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -33,13 +33,14 @@ header {
     justify-content: space-around;
     padding-right: 30px;
 }
+
 .navitem {}
 
 .navlink {
     color: white;
     font-size: 17pt;
     padding-right: 40px;
-    text-decoration: none;   
+    text-decoration: none;
 }
 
 .searchbar {
@@ -62,27 +63,29 @@ header {
     font-size: 20px;
     color: white;
 }
+
 ::placeholder {
     color: white;
 }
 
 .searchbar button img {
-width: 25px;
+    width: 25px;
 }
 
 .searchbar button {
-border: 0;
-border-radius: 50px;
-width: 60px;
-height: 60px;
-background: none;
-cursor: pointer;
+    border: 0;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    background: none;
+    cursor: pointer;
 }
 
-h1{
+h1 {
     text-align: center;
     color: green;
 }
+
 h2 {
     text-align: center;
     color: white;
@@ -91,7 +94,7 @@ h2 {
     border: 10px outset lightgreen;
     background-color: green;
     border-radius: 5px;
-    
+
 }
 
 .boxes {
@@ -102,10 +105,12 @@ h2 {
     color: white;
     display: flex;
     justify-content: space-evenly;
-    
+
 }
 
-.box1, .box2, .box3 {
+.box1,
+.box2,
+.box3 {
     color: white;
     display: flex;
     flex-direction: column;
@@ -115,5 +120,24 @@ h2 {
     border-radius: 5px;
 }
 
+.foot {
+    font-size: 30pt;
+    color: green;
+    margin-inline-start: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.foot1 {
+    font-size: 20pt;
+}
+footer a:visited, :link {
+    color: green;
+}
 
-
+footer {
+    background-color: lightgreen;
+}
+.social {
+    display:flex;
+    justify-content: flex-end;
+}
