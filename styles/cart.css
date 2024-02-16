@@ -28,7 +28,10 @@ p {
 }
 
 header {
-    background-color: lightgreen;
+    background-image: url(../images/nicelawn.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     height: 150px;
     display: flex;
     align-items: baseline;
