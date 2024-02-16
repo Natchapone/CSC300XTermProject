@@ -8,6 +8,7 @@ body {
     position: relative;
     min-height: 100vh;
 }
+
 #content-wrap {
     padding-bottom: 2.5rem;
 }
@@ -15,6 +16,7 @@ body {
 p {
     margin: 0;
 }
+
 
 header {
     background-image: url(../images/nicelawn.jpg);
@@ -25,6 +27,10 @@ header {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+}
+
+.product {
+    height: 150px;
 }
 
 .logo {
@@ -105,9 +111,13 @@ h2 {
 
 }
 
+.ph2 {
+    font-size: 35px;
+    margin: 40px;
+}
+
 .splashbox {
     border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
 }
 
 .boxes {
@@ -132,6 +142,31 @@ h2 {
     background-color: green;
     border-radius: 5px;
 }
+
+.pboxes,
+.pboxes2 {
+    margin: 50px;
+    text-align: center;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid green;
+    flex-wrap: wrap;
+    color: green;
+}
+
+.pbox img {
+    width: 125px;
+    height: 125px;
+}
+
+
 
 .box1 img {
     width: 350px;
@@ -168,6 +203,7 @@ footer a:visited,
 }
 
 #footer {
+    border-top: 1px solid grey;
     position: absolute;
     bottom: 0;
     width: 100%;
