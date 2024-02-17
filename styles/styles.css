@@ -119,7 +119,6 @@ h2 {
 }
 
 .dIMG {
-    
     display: flex;
     justify-content: space-around;
 }
@@ -134,14 +133,23 @@ h2 {
 article {
     color: green;
     text-align: center;
-    border: 1px solid green;
+    border: 1px solid black;
     padding-left: 50px;
     padding-right: 50px;
-    margin-right: 150px;
+    margin-right: 15px;
     font-size: 20px;
     width: 220px;
 }
 
+.dPar {
+    text-align: center;
+    color: green;
+    display: flex;
+    padding-left: 610px;
+    width: 250px;
+    
+
+}
 .splashbox {
     border-top: 1px solid gray;
 }
