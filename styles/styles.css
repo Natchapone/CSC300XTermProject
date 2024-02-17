@@ -57,6 +57,7 @@ header {
     text-decoration: none;
 }
 
+
 .searchbar {
     width: 100%;
     max-width: 500px;
@@ -100,6 +101,7 @@ h1 {
     color: green;
 }
 
+
 h2 {
     text-align: center;
     color: white;
@@ -116,9 +118,34 @@ h2 {
     margin: 40px;
 }
 
+.dIMG {
+    
+    display: flex;
+    justify-content: space-around;
+}
+
+.dIMG img {
+    width: 350px;
+    height: 350px;
+    border: 1px solid black;
+
+}
+
+article {
+    color: green;
+    text-align: center;
+    border: 1px solid green;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-right: 150px;
+    font-size: 20px;
+    width: 220px;
+}
+
 .splashbox {
     border-top: 1px solid gray;
 }
+
 
 .boxes {
     margin: 50px;
