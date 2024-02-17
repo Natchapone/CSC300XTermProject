@@ -154,7 +154,7 @@ header {
     height: 9px;
 }
 
-#price {
+#totalPerItem {
     font-size: 11pt;
     margin-left: 20px;
 }
@@ -177,8 +177,22 @@ header {
     padding-bottom: 10px;
     margin-left: 100px;
 }
-
-
+#checkout{
+    position: relative;
+}
+#checkout button{
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    background-color: lightgreen; 
+    border: none;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
 .foot {
     font-size: 30pt;
