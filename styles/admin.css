@@ -1,0 +1,30 @@
+header {
+    display: flex;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 80px;
+    background-color: green;
+    color: white;
+    align-content: baseline;
+}
+
+.logo {
+    font-size: 30pt;
+    color: white;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    padding-top: 15px;
+    list-style-type: none;
+    text-align: center;
+}
+
+.navtext {
+    color: white;
+    font-size: 15pt;
+    padding: 20px;
+    justify-content: space-between;
+    text-decoration: none;
+
+}
