@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <div class = "logo">
+        <div class="logo">
             LAWN SUPPLY
         </div>
 
@@ -47,6 +47,13 @@
                     }
                 ]
             }
-                </pre>
+            </pre>
+
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file">Select a file:</label>
+            <input type="file" id="file" name="file" accept=".json, .csv, .txt"><br><br>
+            <input type="submit" value="Upload">
+        </form>
+
     </div>
 </body>
