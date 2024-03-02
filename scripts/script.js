@@ -15,15 +15,22 @@ function cat() {
     const products = productList(selected);
 
     // Loop through the products and add them to the list
-    products.forEach(function(product) {
+    products.forEach(function (product) {
         const list = document.createElement('li');
-        list.innerHTML = 'Product ID: ' + product.ID + "<br>Name: "+ product.name + "<br>Description: " + product.Description + "<br>Category: " + product.Category + "<br>Image Path: " + product.imagepath + "<br>Price: $"+ product.price + "<br><br>" + '<button class="edit-btn">Edit</button>' + '<button class="save-btn" style="display:none;">Save Changes</button>';
+        list.innerHTML = 'Product ID: '
+            + product.ID + "<br>Name: "
+            + product.name + "<br>Description: "
+            + product.Description + "<br>Category: "
+            + product.Category + "<br>Image Path: <span class='imgPath' contenteditable='true'>" + product.imagepath + "</span><br>Price: $"
+            + product.imagepath + "<br>Price: $"
+            + product.price + "<br><br>" + '<button class="edit-btn">Edit</button>'
+            + '<button class="save-btn" style="display:none;">Save Changes</button>';
         if (product.imagepath) {
             const img = document.createElement('img');
             img.src = product.imagepath;
             img.alt = "Product Image";
-            img.style.maxWidth = "100px"; 
-            list.appendChild(img); 
+            img.style.maxWidth = "100px";
+            list.appendChild(img);
         }
         // Add the product to the list.
         document.getElementById('listP').appendChild(list);
@@ -53,6 +60,13 @@ function addEditEventListeners() {
             listItem.removeAttribute('contenteditable');
             listItem.querySelector('.edit-btn').style.display = 'inline';
             listItem.querySelector('.save-btn').style.display = 'none';
+
+            // Update image source
+            const imagePath = listItem.querySelector('.imgPath').innerText;
+            const img = listItem.querySelector('img');
+            if (img) {
+                img.src = imagePath;
+            }
         });
     });
 }
@@ -65,18 +79,18 @@ function productList(category) {
     var proList = [];
     if (category === 'Machinery') {
         proList = [
-            {ID: '1', name: 'John Deere S100 Gas Mower', Description: 'This is a gas mower', Category: 'Machinery', imagepath: '/CSC300XTermProject/images/JohnDeere.webp', price: '2,399'},
-            {ID: '2', name: 'Seeder Machine', Description: 'This is a seed disperser', Category: 'Machinery', imagepath: '/CSC300XTermProject/images/SeedM.jpg', price: '1,537'}
+            { ID: '1', name: 'John Deere S100 Gas Mower', Description: 'This is a gas mower', Category: 'Machinery', imagepath: 'images/JohnDeere.webp', price: '2,399' },
+            { ID: '2', name: 'Seeder Machine', Description: 'This is a seed disperser', Category: 'Machinery', imagepath: 'images/SeedM.jpg', price: '1,537' }
         ];
     } else if (category === 'Lawn Supplements') {
         proList = [
-            {ID: '1', name: 'Miracle-Gro Plant Food', Description: 'This is a fertilizer', Category: 'Lawn Supplements', imagepath: '/CSC300XTermProject/images/miraclegro.webp', price: '27.97'},
-            {ID: '2', name: 'Absolute Black Mulch', Description: 'This is mulch', Category: 'Lawn Supplements', imagepath: '/CSC300XTermProject/images/blackmulch.jpg', price: '3.99'}
+            { ID: '1', name: 'Miracle-Gro Plant Food', Description: 'This is a fertilizer', Category: 'Lawn Supplements', imagepath: 'images/miraclegro.webp', price: '27.97' },
+            { ID: '2', name: 'Absolute Black Mulch', Description: 'This is mulch', Category: 'Lawn Supplements', imagepath: 'images/blackmulch.jpg', price: '3.99' }
         ];
     } else if (category === 'Lawn Tools') {
         proList = [
-            {ID: '1', name: 'Forged Hand Trowel', Description: 'This is a trowel', Category: 'Lawn Tools', imagepath: '/CSC300XTermProject/images/trowel.jpeg', price: '30'},
-            {ID: '2', name: 'Watering Can', Description: 'This is a watering can', Category: 'Lawn Tools', imagepath: '/CSC300XTermProject/images/wateringc.jpeg', price: '16.99'}
+            { ID: '1', name: 'Forged Hand Trowel', Description: 'This is a trowel', Category: 'Lawn Tools', imagepath: 'images/trowel.jpeg', price: '30' },
+            { ID: '2', name: 'Watering Can', Description: 'This is a watering can', Category: 'Lawn Tools', imagepath: 'images/wateringc.jpeg', price: '16.99' }
         ];
     }
     return proList;
@@ -94,14 +108,21 @@ function addProduct(e) {
     const productP = document.getElementById('price').value;
     // Create a new product object.
     const list = document.createElement('li');
-    list.innerHTML = 'Product ID: ' + productID + "<br>Name: " + productN + "<br>Description: " + productD + "<br>Category: " + productC + "<br>Image Path: " + productI + "<br>Price: $" + productP + "<br><br>" + '<button class="edit-btn">Edit</button>' + '<button class="save-btn" style="display:none;">Save Changes</button>';
+    list.innerHTML = 'Product ID: ' 
+    + productID + "<br>Name: " 
+    + productN + "<br>Description: " 
+    + productD + "<br>Category: " 
+    + productC + "<br>Image Path: <span class='imgPath' contenteditable='true'>" + productI + "</span><br>Price: $" 
+    + productI + "<br>Price: $" 
+    + productP + "<br><br>" + '<button class="edit-btn">Edit</button>' 
+    + '<button class="save-btn" style="display:none;">Save Changes</button>';
     //If an image path was entered, add an image to the product.
     if (productI) {
         const img = document.createElement('img');
         img.src = productI;
         img.alt = "Product Image";
-        img.style.maxWidth = "100px"; 
-        list.appendChild(img); 
+        img.style.maxWidth = "100px";
+        list.appendChild(img);
     }
     // Add the product to the list.
     document.getElementById('listP').appendChild(list);
