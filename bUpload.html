@@ -14,6 +14,7 @@
             LAWN SUPPLY
         </div>
 
+        <!--navigation-->
         <nav>
             <ul class="navbar">
                 <li><a class="navtext" href="bUpload.html">Bulk Upload</a></li>
@@ -29,6 +30,7 @@
         <h2>Accepted file types: JSON, CVS, TXT</h2>
         <h2>Example Format:</h2>
 
+        <!--format example-->
         <pre>
 
             {
@@ -53,6 +55,7 @@
             }
             </pre>
 
+            <!--form to slect file and upload-->
         <form action="/upload" method="post" enctype="multipart/form-data">
             <label for="file">Select a file:</label>
             <input type="file" id="file" name="file" accept=".json, .csv, .txt"><br><br>

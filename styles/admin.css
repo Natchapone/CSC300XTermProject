@@ -79,3 +79,7 @@ cursor: pointer;
 #listP {
     list-style-type: none;
 }
+
+#listP li {
+    margin: 20px;
+}
