@@ -21,9 +21,10 @@ function cat() {
             + product.ID + "<br>Name: "
             + product.name + "<br>Description: "
             + product.Description + "<br>Category: "
-            + product.Category + "<br>Image Path: <span class='imgPath' contenteditable='true'>" + product.imagepath + "</span><br>Price: $"
-            + product.imagepath + "<br>Price: $"
-            + product.price + "<br><br>" + '<button class="edit-btn">Edit</button>'
+            + product.Category 
+            + "<br>Image Path: <span class='imgPath' contenteditable='true'>" + product.imagepath + "</span><br>Price: $"
+            + product.price + "<br><br>" 
+            + '<button class="edit-btn">Edit</button>'
             + '<button class="save-btn" style="display:none;">Save Changes</button>';
         if (product.imagepath) {
             const img = document.createElement('img');
@@ -112,8 +113,9 @@ function addProduct(e) {
     + productID + "<br>Name: " 
     + productN + "<br>Description: " 
     + productD + "<br>Category: " 
-    + productC + "<br>Image Path: <span class='imgPath' contenteditable='true'>" + productI + "</span><br>Price: $" 
-    + productI + "<br>Price: $" 
+    + productC 
+    + "<br>Image Path: <span class='imgPath' contenteditable='true'>" 
+    + productI + "</span><br>Price: $" 
     + productP + "<br><br>" + '<button class="edit-btn">Edit</button>' 
     + '<button class="save-btn" style="display:none;">Save Changes</button>';
     //If an image path was entered, add an image to the product.
