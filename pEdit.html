@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <div class = "logo">
+        <div class="logo">
             LAWN SUPPLY
         </div>
 
@@ -22,4 +22,48 @@
             </ul>
         </nav>
     </header>
+
+    <div class="pContainer">
+        <h1>Product Edit</h1>
+        <h2>Add Product</h2>
+        <form id="label">Select Your Product Type:
+            <select name="options" id="options">
+                <optgroup label="Product Categories">
+                    <option value="1">Machinery</option>
+                    <option value="2">Lawn Supplements</option>
+                    <option value="3">Lawn Tools</option>
+            </select>
+            <button type="button" name="select" id="select" onclick="cat()">Select</button>
+        </form>
+
+        <div class="addPro" id="proForm">
+            <form id="productAdd">
+                <label for="productID"contenteditable ="false">Product ID: </label>
+                <input type="text" id="productID" readonly><br>
+                <label for=productName">Name: </label>
+                <input type="text" id="productName" name="productName"required><br>
+                <label for="description">Description: </label>
+                <input type="text" id="description" name="description"required><br>
+                <label for="category">Category: </label>
+                <span id="category" contenteditable="true"></span><br>
+                <label for="imageP" readonly>Image Path: </label>
+                <input type="text" id="imageP" name="imageP"> <br>
+                <img id="imag" src="" alt=""/>
+                <label for="price">Price: </label>
+                <input type="text" id="price" name="price"required><br>
+                <button type="submit" id = "button4add" onclick="addProduct1()">Add Product</button>
+            </form>
+
+        </div>
+
+        <h2>List of Products:</h2>
+        <ul id = "listP">
+
+        </ul>
+    </div>
+
+
+
 </body>
+
+</html>

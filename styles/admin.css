@@ -32,3 +32,50 @@ header {
 .uploadBox {
     margin: 20px;
 }
+
+.pContainer {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.pContainer h1, h2{
+    margin: 20px;
+}
+
+#options {
+    width: 200px;
+    margin: 2px;
+    display: inline-block;
+}
+
+#label {
+    margin-left: 19px;
+    font-size: 18px;
+    display: inline-block;
+}
+
+#select {
+    width: 75px;
+    display: inline-block;
+}
+
+#close {
+cursor: pointer;
+}
+
+.addPro {
+    margin-left: 20px;
+}
+
+#button4add {
+    margin-top: 15px;
+}
+
+#productAdd {
+    padding: 20px;
+}
+
+#listP {
+    list-style-type: none;
+}
