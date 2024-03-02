@@ -14,6 +14,7 @@
             LAWN SUPPLY
         </div>
 
+
         <nav>
             <ul class="navbar">
                 <li><a class="navtext" href="bUpload.html">Bulk Upload</a></li>
@@ -22,6 +23,7 @@
             </ul>
         </nav>
     </header>
+
 
     <div class="pContainer">
         <h1>Product Edit</h1>
@@ -36,34 +38,32 @@
             <button type="button" name="select" id="select" onclick="cat()">Select</button>
         </form>
 
+
         <div class="addPro" id="proForm">
             <form id="productAdd">
-                <label for="productID"contenteditable ="false">Product ID: </label>
+                <label for="productID" contenteditable="false">Product ID: </label>
                 <input type="text" id="productID" readonly><br>
                 <label for=productName">Name: </label>
-                <input type="text" id="productName" name="productName"required><br>
+                <input type="text" id="productName" name="productName" required><br>
                 <label for="description">Description: </label>
-                <input type="text" id="description" name="description"required><br>
+                <input type="text" id="description" name="description" required><br>
                 <label for="category">Category: </label>
                 <span id="category" contenteditable="true"></span><br>
                 <label for="imageP" readonly>Image Path: </label>
                 <input type="text" id="imageP" name="imageP"> <br>
-                <img id="imag" src="" alt=""/>
+                <img id="imag" src="" alt="" />
                 <label for="price">Price: </label>
-                <input type="text" id="price" name="price"required><br>
-                <button type="submit" id = "button4add" onclick="addProduct1()">Add Product</button>
+                <input type="text" id="price" name="price" required><br>
+                <button type="submit" id="button4add" onclick="addProduct1()">Add Product</button>
             </form>
+
 
         </div>
 
-        <h2>List of Products:</h2>
-        <ul id = "listP">
 
+        <h2>List of Products:</h2>
+        <ul id="listP">
         </ul>
     </div>
-
-
-
 </body>
-
 </html>
