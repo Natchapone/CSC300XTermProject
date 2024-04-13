@@ -1,0 +1,22 @@
+<%- include('./partials/head') %>
+<div id="container">
+    <div id="content-wrap">
+        <div class="details">
+            <h1><%= product.name %></h1>
+
+            <div class="dIMG">
+                <img src="<%= product.image %>" alt="<%= product.alt %>">
+                <article>
+                    Description: <br> <br>
+                    <%= product.description %>
+                    <br> <br>
+                    Price: <%= product.price %>
+                    <br>
+                    <br>
+                    <button>Add to Cart</button>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('./partials/footer') %>
