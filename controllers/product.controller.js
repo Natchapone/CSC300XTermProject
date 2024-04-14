@@ -21,7 +21,19 @@ function getAll(req, res, next) {
   }
 }
 
+function getAllByCategory(req, res, next) {
+  let category = req.params.category;
+  let products = model.getAllByCategory(category);
+  try {
+    res.render("productsByCategory", { products: products, category: category, title: "Products in " + category + " Category" });
+  } catch (err) {
+    console.error("Error while getting products by category ", err.message);
+    next(err);
+  }
+}
+
 module.exports = {
-    getAll,
-  };
+  getAll,
+  getAllByCategory,
+};
 

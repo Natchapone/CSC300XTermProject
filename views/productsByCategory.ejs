@@ -1,0 +1,18 @@
+<%- include('./partials/head') %>
+
+    <!-- Content Security Policy-->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://lazyload.org;">
+
+    <div class="splashbox">
+        <h2 class="ph2">Products in <%= category %> Category</h2>
+        <div class="pboxes">
+            <% products.forEach(product=> { %>
+                <div class="pbox">
+                    <%= product.name %> <br> Price: $<%= product.price %>
+                            <a href="details.html"><img src="<%= product.image %>" alt="<%= product.name %>"></a>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+
+    <%- include('./partials/footer') %>

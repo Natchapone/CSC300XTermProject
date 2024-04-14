@@ -34,17 +34,18 @@
                 <h2>Our Gear</h2>
                 <div class="boxes">
                     <div class="box1">Machinery
-                        <a href="#"><img src="images/mower.jpeg" alt="machinery image"></a>
+                        <a href="/product/category/machinery"><img src="images/mower.jpeg" alt="machinery image"></a>
                     </div>
                     <div class="box2">Lawn Supplements
-                        <a href="#"><img src="images/supplements.jpeg" alt="supplements image"></a>
+                        <a href="/product/category/machinery"><img src="images/supplements.jpeg" alt="supplements image"></a>
                     </div>
                     <div class="box3">Lawn Tools
-                        <a href="#"><img src="images/tools.jpeg" alt="tools"></a>
+                        <a href="/product/category/tools"><img src="images/tools.jpeg" alt="tools"></a>
                     </div>
                 </div>
 
-            </div>
+            </div>CREATE TABLE "carts" ( "cartID" INTEGER, "status" TEXT NOT NULL, "created" NUMERIC NOT NULL, "userID" INTEGER NOT NULL UNIQUE, PRIMARY KEY("cartID" AUTOINCREMENT), FOREIGN KEY("userID") REFERENCES "users"("userID") );
+            
         </div>
 
         <footer id="footer">
