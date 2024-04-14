@@ -14,7 +14,7 @@ function getAllByCategory(category) {
   };
 
 function getOneById(id) {
-    let sql = "SELECT * FROM products WHERE id =? ;";
+    let sql = "SELECT * FROM products WHERE productID =? ;";
     const item = db.get(sql, id);
     return item;
   };
