@@ -12,9 +12,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const productRouter = require("./routes/product.route");
-const cartRouter = require("./routes/cart.route");
+//const cartRouter = require("./routes/cart.route");
 app.use("/product", productRouter);
-app.use("/cart", cartRouter);
+//app.use("/cart", cartRouter);
 
 
 app.get("/", (req, res) => {
