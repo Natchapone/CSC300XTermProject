@@ -1,7 +1,17 @@
 "use strict";
 const express = require("express");
 const multer = require("multer");
+const helmet = require('helmet');
 const app = express();
+
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+    defaultSrc: ["'none'"],
+    scriptSrc: ["'self'", "http://lazyload.org"],
+  }
+}));
+
+
 const path = require("path");
 app.use(multer().none());
 app.use(express.urlencoded({ extended: true }));
@@ -13,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const productRouter = require("./routes/product.route");
 //const cartRouter = require("./routes/cart.route");
-app.use("/product", productRouter);
+app.use("/products", productRouter);
 //app.use("/cart", cartRouter);
 
 
