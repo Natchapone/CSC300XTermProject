@@ -8,7 +8,7 @@ function getAll() {
   };
 
 function getAllByCategory(category) {
-    let sql = "SELECT * FROM products WHERE category =? ORDER BY name;";
+    let sql = "SELECT products.*, categories.category_name FROM products JOIN categories ON products.catID = categories.catID WHERE categories.cat_name = ? ORDER BY products.name;";
     const data = db.all(sql, category);
     return data;
   };
