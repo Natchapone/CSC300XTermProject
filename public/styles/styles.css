@@ -196,12 +196,14 @@ article {
     color: green;
 }
 
+.pbox.inline {
+    display: inline-block;
+}
+
 .pbox img {
     width: 125px;
     height: 125px;
 }
-
-
 
 .box1 img {
     width: 350px;

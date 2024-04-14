@@ -21,14 +21,15 @@ function getAll(req, res, next) {
   }
 }
 
-function getAllByCategory(req, res, next) {
-  let category = req.params.category;
-  let products = model.getAllByCategory(category);
+async function getAllByCategory(req, res) {
   try {
-    res.render("productsByCategory", { products: products, category: category, title: "Products in " + category + " Category" });
-  } catch (err) {
-    console.error("Error while getting products by category ", err.message);
-    next(err);
+    const category = req.params.category;
+    const products = await model.getAllByCategory(category);
+    // Pass the category as the title to the template
+    res.render('productsByCategory', { title: category, products });
+  } catch (error) {
+    console.error('Error getting products by category:', error);
+    res.status(500).send('Internal Server Error');
   }
 }
 

@@ -1,18 +1,21 @@
 <%- include('./partials/head') %>
 
-    <!-- Content Security Policy-->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://lazyload.org;">
+    <h2 class="ph2">Products in <%= title %>
+    </h2>
 
     <div class="splashbox">
-        <h2 class="ph2">Products in <%= category %> Category</h2>
         <div class="pboxes">
             <% products.forEach(product=> { %>
-                <div class="pbox">
-                    <%= product.name %> <br> Price: $<%= product.price %>
-                            <a href="details.html"><img src="<%= product.image %>" alt="<%= product.name %>"></a>
-                </div>
-                <% }); %>
+                <div class="pbox inline"> <!-- Add 'inline' class here -->
+                    <p>
+                        <%= product.product_name %>
+                    </p>
+                    <p>Price: $<%= product.price %>
+                    </p>
+                    <img src="<%= product.imagepath %>" alt="<%= product.product_name %>">
         </div>
+        <% }); %>
+    </div>
     </div>
 
     <%- include('./partials/footer') %>

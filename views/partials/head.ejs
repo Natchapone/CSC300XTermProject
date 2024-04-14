@@ -3,9 +3,30 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../../public/styles/styles.css" />
-    <script src="../../public/scripts/script.js" defer></script>
     <title>
         <%= title %>
     </title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <script src="/scripts/script.js"></script>
 </head>
+
+<body>
+    <header class="product">
+        <div class="logo">
+            <p>Lawn Supply</p>
+        </div>
+
+        <form action="#" class="searchbar">
+            <input type="text" placeholder="Look for products..." name="q">
+            <button type="submit"><img src="/images/search.png"></button>
+        </form>
+
+        <nav class="navigation">
+            <ul class="navbar">
+                <li class="navitem"><a class="navlink" href="index.html">Home</a></li>
+                <li class="navitem"><a class="navlink" href="index.html">Sign In</a></li>
+                <li class="navitem"><a class="navlink" href="products.html">Products</a></li>
+                <li class="navitem"><a class="navlink" href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
