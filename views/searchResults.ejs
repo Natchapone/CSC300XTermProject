@@ -5,13 +5,13 @@
         <% if (products.length> 0) { %>
             <div class="pboxes">
                 <% products.forEach(product=> { %>
-                    <div class="pbox">
+                    <div class="pbox inline">
                         <p>
                             <%= product.product_name %>
                         </p>
                         <p>Price: $<%= product.price %>
                         </p>
-                        <img src="<%= product.imagepath %>" alt="<%= product.product_name %>">
+                        <a href = "/products/items/<%= product.productID %>"><img src="<%= product.imagepath %>" alt="<%= product.product_name %>"> </a>
                     </div>
                     <% }); %>
             </div>

@@ -18,20 +18,11 @@ function getOneById(id) {
   return item;
 }
 
-function search(searchTerm) {
-  console.log('Search term:', searchTerm); // Log the searchTerm to check its type and value trying figure out error
-  return new Promise((resolve, reject) => {
+function search(params) {
     let sql = 'SELECT * FROM products WHERE product_name LIKE ?;';
-    db.all(sql, [`%${searchTerm}%`], (err, rows) => {
-      if (err) {
-        console.error("Error executing search query:", err);
-        reject(err);
-      } else {
-        resolve(rows);
-      }
-    });
-  });
-}
+    let menu = db.all(sql, params);
+    return menu;
+  };
 
 module.exports = {
   getAll,

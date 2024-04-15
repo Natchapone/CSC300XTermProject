@@ -36,9 +36,11 @@ function getOneById(req, res, next) {
   }
 async function searchByName(req, res, next) {
   try {
+    let products = [];
     const term = req.query.term;
+    let searchTerm = '%' + term + '%';
     console.log('Search term:', term); // Log the search term
-    const products = await model.search(term);
+    products = await model.search(searchTerm);
     res.render("searchResults", { products: products, title: 'Search Results' });
   } catch (err) {
     console.error("Error while searching for products: ", err);
@@ -51,5 +53,6 @@ async function searchByName(req, res, next) {
 module.exports = {
   getAll,
   getAllByCategory,
+  getOneById,
   searchByName,
 };
