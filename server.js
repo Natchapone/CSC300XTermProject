@@ -16,9 +16,8 @@ const productRouter = require("./routes/product.route");
 app.use("/products", productRouter);
 //app.use("/cart", cartRouter);
 
-
-app.get("/", (req, res) => {
-  res.json({ message: "You are at the home page!" });
+app.get("/products", (req, res) => {
+  res.render("products");
 });
 
 const PORT = process.env.PORT || 8000;

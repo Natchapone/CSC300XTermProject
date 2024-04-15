@@ -1,20 +1,12 @@
+// controllers/product.controller.js
 "use strict";
-
-const express = require("express");
-const app = express();
-
-const multer = require("multer");
-app.use(multer().none());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 const model = require("../models/product.model");
 
-function getAll(req, res, next) {
-  let products = model.getAll();
+async function getAll(req, res, next) {
   try {
+    const products = await model.getAll();
     res.render("products", { products: products, title: 'Lawn Supply' });
-    // res.json(model.getAll());
   } catch (err) {
     console.error("Error while getting menu ", err.message);
     next(err);
@@ -24,8 +16,7 @@ function getAll(req, res, next) {
 async function getAllByCategory(req, res) {
   try {
     const category = req.params.category;
-    const products = model.getAllByCategory(category);
-    // Pass the category as the title to the template
+    const products = await model.getAllByCategory(category);
     res.render('productsByCategory', { title: category, products });
   } catch (error) {
     console.error('Error getting products by category:', error);
@@ -37,4 +28,3 @@ module.exports = {
   getAll,
   getAllByCategory,
 };
-
