@@ -4,7 +4,7 @@ const router = express.Router();
 
 const productController = require("../controllers/product.controller");
 
-router.get("/products", productController.getAll); // route to the all products page
+router.get("/", productController.getAll); // route to the all products page
 router.get("/category/:category", productController.getAllByCategory); // route to the product page by category
 //router.get("/item/:id", productcontroller.getOneById); // route to a specific product
 //router.post("/add", productcontroller.createNew); // action to add new product in the product edit page

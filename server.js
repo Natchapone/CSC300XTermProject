@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const productRouter = require("./routes/product.route");
 //const cartRouter = require("./routes/cart.route");
-app.use("/product", productRouter);
+app.use("/products", productRouter);
 //app.use("/cart", cartRouter);
 
 

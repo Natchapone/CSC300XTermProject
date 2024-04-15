@@ -24,7 +24,7 @@ function getAll(req, res, next) {
 async function getAllByCategory(req, res) {
   try {
     const category = req.params.category;
-    const products = await model.getAllByCategory(category);
+    const products = model.getAllByCategory(category);
     // Pass the category as the title to the template
     res.render('productsByCategory', { title: category, products });
   } catch (error) {
