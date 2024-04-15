@@ -24,6 +24,16 @@ async function getAllByCategory(req, res) {
   }
 }
 
+function getOneById(req, res, next) {
+    let id = req.params.id;
+    try {
+      let product = model.getOneById(id);
+      res.render("details", { product: product, title: 'Product #' + id });
+    } catch (err) {
+      console.error("Error while getting product details: ", err.message);
+      next(err);
+    }
+  }
 async function searchByName(req, res, next) {
   try {
     const term = req.query.term;
@@ -35,6 +45,8 @@ async function searchByName(req, res, next) {
     next(err);
   }
 }
+
+
 
 module.exports = {
   getAll,

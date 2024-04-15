@@ -7,7 +7,7 @@
                 <% products.slice(i, i + 4).forEach(product=> { %>
                     <div class="pbox">
                         <%= product.product_name %> <br> Price: $<%= product.price %>
-                                <a href="details.html"><img src="<%= product.imagepath %>"
+                                <a href="/products/items/<%= product.productID %>"><img src="<%= product.imagepath %>"
                                         alt="<%= product.product_name %>"></a>
                     </div>
                     <% }); %>
