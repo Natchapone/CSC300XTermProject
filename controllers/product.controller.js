@@ -24,19 +24,20 @@ async function getAllByCategory(req, res) {
   }
 }
 
-async function getOneById(req, res) {
+async function searchByName(req, res, next) {
   try {
-    const Id = req.params.Id;
-    const products = await model.getOneById(Id);
-    res.render('details'), {}
-  } catch (error) {
-    console.error('Error getting product by ID:', error);
-    res.status(500).send('Internal Server Error');
+    const term = req.query.term;
+    console.log('Search term:', term); // Log the search term
+    const products = await model.search(term);
+    res.render("searchResults", { products: products, title: 'Search Results' });
+  } catch (err) {
+    console.error("Error while searching for products: ", err);
+    next(err);
   }
 }
 
 module.exports = {
   getAll,
   getAllByCategory,
-  getOneById,
+  searchByName,
 };

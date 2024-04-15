@@ -7,7 +7,7 @@
         <%= title %>
     </title>
     <link rel="stylesheet" href="/styles/styles.css" />
-    <script src="/scripts/script.js"></script>
+    <script src="/scripts/MVCscript.js" defer></script>
 </head>
 
 <body>
@@ -16,8 +16,8 @@
             <p>Lawn Supply</p>
         </div>
 
-        <form action="#" class="searchbar">
-            <input type="text" placeholder="Look for products..." name="q">
+        <form action="/products/search" method="GET" class="searchbar">
+            <input type="text" placeholder="Search for products..." name="term">
             <button type="submit"><img src="/images/search.png"></button>
         </form>
 

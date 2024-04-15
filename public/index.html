@@ -15,19 +15,19 @@
                     <p>Lawn Supply</p>
                 </div>
 
-                <form action="#" class="searchbar">
-                    <input type="text" placeholder="Look for products..." name="q">
-                    <button type="submit"><img src="images/search.png"></button>
+                <form action="/products/search" method="GET" class="searchbar">
+                    <input type="text" placeholder="Search for products..." name="term">
+                    <button type="submit"><img src="/images/search.png"></button>
                 </form>
 
                 <nav class="navigation">
                     <ul class="navbar">
-                        <li class="navitem"><a class="navlink" href="index.html">Home</a></li>
-                        <li class="navitem"><a class="navlink" href="admin.html">Sign In</a></li>
+                        <li class="navitem"><a class="navlink" href="/">Home</a></li>
+                        <li class="navitem"><a class="navlink" href="/signin">Sign In</a></li>
                         <li class="navitem"><a class="navlink" href="/products">Products</a></li>
-                        <li class="navitem"><a class="navlink" href="cart.html">Cart</a></li>
+                        <li class="navitem"><a class="navlink" href="/cart">Cart</a></li>
                     </ul>
-                </nav>
+                </nav>                
             </header>
             <h1>Rooted in Quality, Grown with Care.</h1>
             <div class="splashbox">

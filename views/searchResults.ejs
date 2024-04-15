@@ -1,0 +1,23 @@
+<%- include('./partials/head') %>
+
+    <div class="splashbox">
+        <h2 class="ph2">Search Results</h2>
+        <% if (products.length> 0) { %>
+            <div class="pboxes">
+                <% products.forEach(product=> { %>
+                    <div class="pbox">
+                        <p>
+                            <%= product.product_name %>
+                        </p>
+                        <p>Price: $<%= product.price %>
+                        </p>
+                        <img src="<%= product.imagepath %>" alt="<%= product.product_name %>">
+                    </div>
+                    <% }); %>
+            </div>
+            <% } else { %>
+                <p>No products found.</p>
+                <% } %>
+    </div>
+
+    <%- include('./partials/footer') %>
