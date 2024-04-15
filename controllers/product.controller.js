@@ -24,7 +24,19 @@ async function getAllByCategory(req, res) {
   }
 }
 
+async function getOneById(req, res) {
+  try {
+    const Id = req.params.Id;
+    const products = await model.getOneById(Id);
+    res.render('details'), {}
+  } catch (error) {
+    console.error('Error getting product by ID:', error);
+    res.status(500).send('Internal Server Error');
+  }
+}
+
 module.exports = {
   getAll,
   getAllByCategory,
+  getOneById,
 };
