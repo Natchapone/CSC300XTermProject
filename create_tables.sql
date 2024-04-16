@@ -35,10 +35,10 @@ CREATE TABLE IF NOT EXISTS "products" (
 );
 CREATE TABLE IF NOT EXISTS "users" (
 	"userID"	INTEGER,
-	"username"	TEXT NOT NULL UNIQUE,
-	"email"	TEXT NOT NULL UNIQUE,
-	"password"	TEXT NOT NULL,
-	"userType"	TEXT NOT NULL,
+	"username"	TEXT NOT NULL,
+	"email"	TEXT NOT NULL,
+	"password"	TEXT,
+	"userType"	TEXT,
 	"created"	NUMERIC NOT NULL,
 	PRIMARY KEY("userID" AUTOINCREMENT)
 );

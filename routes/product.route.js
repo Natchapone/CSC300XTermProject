@@ -12,4 +12,14 @@ router.get("/search", productController.searchByName); // Route to handle produc
 //router.put("/edit/:id", productcontroller.update); // action to edit product on the edit page
 //router.get("/cart", productcontroller.getCartItems); // route to the cart page
 
+
+function ensureAuth(req, res, next) {
+    req.session.returnTo = req.originalUrl;
+    if (!req.isAuthenticated()) {
+      return res.redirect('/auth/login');
+    }
+    console.log("$$$$$" + req.session.returnTo)
+    next();
+  }
+
 module.exports = router;
