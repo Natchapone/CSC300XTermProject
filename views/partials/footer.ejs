@@ -15,8 +15,18 @@ Copyright &#169; 2024 Lawn Supply
             <a class="Twitter" href="#"><img src="/images/twitter-icon.png" alt="Twitter"></a>
         </div>
 
+        <a href="/products/productEdit" onclick="confirmAdmin(); return false;">Admin Products Edit</a>
     </div>
 </footer>
-</body>
 
-</html>
+<div id="conWindow" class="conWindow">
+    <div class="conWindow-content">
+        <span class="closeWindow" onclick="closeConfirm();">&times;</span>
+        <h2>Enter Admin Password</h2>
+        <input type="password" id="password" placeholder="Enter password" onkeypress="pressEnter(event)">
+        <button onclick="checkPassword();">Submit</button>
+        <p id="error-message"></p>
+    </div>
+</div>
+
+</body>

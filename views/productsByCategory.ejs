@@ -6,16 +6,17 @@
     <div class="splashbox">
         <div class="pboxes">
             <% products.forEach(product=> { %>
-                <div class="pbox inline"> 
+                <div class="pbox inline">
                     <p>
                         <%= product.product_name %>
                     </p>
                     <p>Price: $<%= product.price %>
                     </p>
-                    <a href = "/products/items/<%= product.productID %>"><img src="<%= product.imagepath %>" alt="<%= product.product_name %>"> </a>
+                    <a href="/products/items/<%= product.productID %>"><img src="<%= product.imagepath %>"
+                            alt="<%= product.product_name %>"> </a>
+                </div>
+                <% }); %>
         </div>
-        <% }); %>
-    </div>
     </div>
 
     <%- include('./partials/footer') %>

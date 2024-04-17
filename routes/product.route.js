@@ -8,18 +8,19 @@ router.get("/category/:category", productController.getAllByCategory); // route 
 router.get("/items/:id", productController.getOneById); // route to a specific product
 //router.post("/add", productcontroller.createNew); // action to add new product in the product edit page
 router.get("/search", productController.searchByName); // Route to handle product search
-//router.delete("/delete/:id", productcontroller.deleteById); // action to delete a product in the product edit page
 //router.put("/edit/:id", productcontroller.update); // action to edit product on the edit page
 //router.get("/cart", productcontroller.getCartItems); // route to the cart page
+router.get("/inventory", productController.renderInventory);
+router.post("/add", productController.addNewProduct);
 
 
-function ensureAuth(req, res, next) {
+/*function ensureAuth(req, res, next) {
     req.session.returnTo = req.originalUrl;
     if (!req.isAuthenticated()) {
       return res.redirect('/auth/login');
     }
     console.log("$$$$$" + req.session.returnTo)
     next();
-  }
+  }*/
 
 module.exports = router;

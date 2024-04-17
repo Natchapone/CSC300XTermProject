@@ -1,24 +1,26 @@
 <%- include('./partials/head') %>
 
-<div id="container">
-    <div id="content-wrap">
-        <div class="details">
-            <h1><%= product.product_name %></h1>
+    <div id="container">
+        <div id="content-wrap">
+            <div class="details">
+                <h1>
+                    <%= product.product_name %>
+                </h1>
 
-            <div class="dIMG">
-                <img src="<%= product.imagepath %>" alt="<%= product.product_name %>">
-                <article>
-                    Description: <br> <br>
-                    <%= product.description %>
-                    <br> <br>
-                    Price: $<%= product.price %>
-                    <br>
-                    <br>
-                    <button>Add to Cart</button>
-                </article>
+                <div class="dIMG">
+                    <img src="<%= product.imagepath %>" alt="<%= product.product_name %>">
+                    <article>
+                        Description: <br> <br>
+                        <%= product.description %>
+                            <br> <br>
+                            Price: $<%= product.price %>
+                                <br>
+                                <br>
+                                <button>Add to Cart</button>
+                    </article>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<%- include('./partials/footer') %>
+    <%- include('./partials/footer') %>

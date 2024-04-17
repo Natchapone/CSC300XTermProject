@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>Lawn Supply</title>
     <link rel="stylesheet" href="styles/styles.css" />
+    <script src="scripts/MVCscript.js" defer></script>
+
 </head>
 
 <body>
@@ -67,11 +69,19 @@
                     <a class="Twitter" href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
                 </div>
 
+                <a href="/products/inventory" onclick="confirmAdmin(); return false;">Manage Inventory</a>
             </div>
         </footer>
 
-    </div>
+        <div id="conWindow" class="conWindow">
+            <div class="conWindow-content">
+                <span class="closeWindow" onclick="closeConfirm();">&times;</span>
+                <h2>Enter Admin Password</h2>
+                <input type="password" id="password" placeholder="Enter password" onkeypress="pressEnter(event)">
+                <button onclick="checkPassword();">Submit</button>
+                <p id="error-message"></p>
+            </div>
+        </div>
+
     </div>
 </body>
-
-</html>
