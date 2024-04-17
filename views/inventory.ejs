@@ -9,42 +9,45 @@
 </head>
 
 <body>
-    <div class="inventoryContainer">
-        <a class="navlink" href="http://localhost:8000">Go Home</a></li>
-        <h1>Inventory</h1>
-        <button id="new-product-btn">New Item</button>
-        <%- include('./partials/new-product-form') %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% products.forEach(product=> { %>
+
+    <%- include('./partials/admin-head') %>
+
+        <div class="inventoryContainer">
+            <a href="http://localhost:8000">Go Home</a></li>
+            <h1>Inventory</h1>
+            <button id="new-product-btn">New Item</button>
+            <%- include('./partials/new-product-form') %>
+                <table>
+                    <thead>
                         <tr>
-                            <td>
-                                <a href="/products/item/<%= product.productID %>">
-                                    <%= product.productID %>
-                                </a>
-                            </td>
-                            <td>
-                                <%= product.product_name %>
-                            </td>
-                            <td>
-                                <%= product.cat_name %>
-                            </td>
-                            <td>
-                                <%= product.price %>
-                            </td>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
                         </tr>
-                        <% }); %>
-                </tbody>
-            </table>
-    </div>
+                    </thead>
+                    <tbody>
+                        <% products.forEach(product=> { %>
+                            <tr>
+                                <td>
+                                    <a href="/products/item/<%= product.productID %>">
+                                        <%= product.productID %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <%= product.product_name %>
+                                </td>
+                                <td>
+                                    <%= product.cat_name %>
+                                </td>
+                                <td>
+                                    <%= product.price %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+        </div>
 
 </body>
 

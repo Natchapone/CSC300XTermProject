@@ -8,50 +8,55 @@
 </head>
 
 <body>
-    <a class="navlink" href="http://localhost:8000/products/inventory">Go Back</a></li>
-    <div class="itemDetailsContainer">
-        <h1>Item Details</h1>
-        <div class="itemInfo">
-            <form action="/products/item/<%= product.productID %>/edit" method="POST">
-                <div class="itemAttribute">
-                    <label for="productName">Name:</label>
-                    <input type="text" id="productName" name="productName" value="<%= product.product_name %>" required>
-                </div>
 
-                <div class="itemAttribute">
-                    <label for="productDescription">Description:</label>
-                    <textarea id="productDescription" rows="6" cols="50" name="productDescription"
-                        required><%= product.description %></textarea>
-                </div>
+    <%- include('./partials/admin-head') %>
 
-                <div class="itemAttribute">
-                    <label for="productCategory">Category:</label>
-                    <input type="text" id="productCategory" name="productCategory" value="<%= product.cat_name %>"
-                        required>
-                </div>
+        <a href="http://localhost:8000/products/inventory">Go Back</a></li>
+        <div class="itemDetailsContainer">
+            <h1>Item Details</h1>
+            <div class="itemInfo">
+                <form action="/products/item/<%= product.productID %>/edit" method="POST">
+                    <div class="itemAttribute">
+                        <label for="productName">Name:</label>
+                        <input type="text" id="productName" name="productName" value="<%= product.product_name %>"
+                            required>
+                    </div>
 
-                <div class="itemAttribute">
-                    <label for="productPrice">Price:</label>
-                    <input type="number" id="productPrice" name="productPrice" value="<%= product.price %>" step="0.01"
-                        required>
-                </div>
+                    <div class="itemAttribute">
+                        <label for="productDescription">Description:</label>
+                        <textarea id="productDescription" rows="6" cols="50" name="productDescription"
+                            required><%= product.description %></textarea>
+                    </div>
 
-                <div class="itemAttribute">
-                    <label for="productImage">Image Path:</label>
-                    <input type="text" id="productImage" name="productImage" value="<%= product.imagepath %>" required>
-                </div>
+                    <div class="itemAttribute">
+                        <label for="productCategory">Category:</label>
+                        <input type="text" id="productCategory" name="productCategory" value="<%= product.cat_name %>"
+                            required>
+                    </div>
 
-                <button type="submit">Save</button>
+                    <div class="itemAttribute">
+                        <label for="productPrice">Price:</label>
+                        <input type="number" id="productPrice" name="productPrice" value="<%= product.price %>"
+                            step="0.01" required>
+                    </div>
+
+                    <div class="itemAttribute">
+                        <label for="productImage">Image Path:</label>
+                        <input type="text" id="productImage" name="productImage" value="<%= product.imagepath %>"
+                            required>
+                    </div>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+
+            <div class="itemImage">
+                <img src="<%= product.imagepath %>" alt="<%= product.product_name %>" />
+            </div>
+            <form action="/products/item/<%= product.productID %>/delete" method="POST">
+                <button type="submit">Delete</button>
             </form>
         </div>
-
-        <div class="itemImage">
-            <img src="<%= product.imagepath %>" alt="<%= product.product_name %>" />
-        </div>
-        <form action="/products/item/<%= product.productID %>/delete" method="POST">
-            <button type="submit">Delete</button>
-        </form>
-    </div>
 </body>
 
 </html>
