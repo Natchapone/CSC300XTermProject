@@ -68,6 +68,50 @@ async function addNewProduct(req, res, next) {
   }
 }
 
+function getItemDetails(req, res) {
+  let id = req.params.id;
+  try {
+    let product = model.getOneById(id);
+    console.log("Retrieved Product:", product);
+    res.render("item-details", { product: product });
+  } catch (err) {
+    console.error("Error while getting product details: ", err.message);
+    next(err);
+  }
+}
+
+async function updateProduct(req, res, next) {
+  let id = parseInt(req.params.id);
+  let name = req.body.productName;
+  let description = req.body.productDescription;
+  let category = req.body.productCategory;
+  let price = parseFloat(req.body.productPrice);
+  let imagePath = req.body.productImage;
+
+  if (id && name && description && category && price && imagePath) {
+    try {
+      await model.updateProduct(id, name, description, category, imagePath, price);
+      res.redirect(`/products/item/${id}`);
+    } catch (err) {
+      console.error("Error updating product: ", err.message);
+      next(err);
+    }
+  } else {
+    res.status(400).send("Missing or invalid parameters for product update.");
+  }
+}
+
+async function deleteProduct(req, res, next) {
+  const productId = req.params.id;
+  try {
+    await model.deleteProduct(productId);
+    res.redirect("/products/inventory");
+  } catch (err) {
+    console.error("Error deleting product:", err);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
 module.exports = {
   getAll,
   getAllByCategory,
@@ -75,4 +119,7 @@ module.exports = {
   searchByName,
   renderInventory,
   addNewProduct,
+  getItemDetails,
+  updateProduct,
+  deleteProduct,
 };

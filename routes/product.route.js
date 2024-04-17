@@ -6,9 +6,10 @@ const productController = require("../controllers/product.controller");
 router.get("/", productController.getAll); // route to the all products page
 router.get("/category/:category", productController.getAllByCategory); // route to the product page by category
 router.get("/items/:id", productController.getOneById); // route to a specific product
-//router.post("/add", productcontroller.createNew); // action to add new product in the product edit page
+router.get("/item/:id", productController.getItemDetails); // Route to view item details
+router.post("/item/:id/edit", productController.updateProduct); // route to update product
+router.post("/item/:id/delete", productController.deleteProduct); //Route to delete an item
 router.get("/search", productController.searchByName); // Route to handle product search
-//router.put("/edit/:id", productcontroller.update); // action to edit product on the edit page
 //router.get("/cart", productcontroller.getCartItems); // route to the cart page
 router.get("/inventory", productController.renderInventory);
 router.post("/add", productController.addNewProduct);
