@@ -3,27 +3,21 @@
 
 const model = require("../models/cart.model");
 
-async function createCart(req, res) {
+async function createCart(userID) {
     try {
-        const userID = req.user.id;
-        const cartID = await model.createCart(userID);
-
-        const cartProducts = await model.getCartProducts(cartID);
-
-        const totals = await calculateCartTotals(cartProducts);
-        res.render("cart", { cartProducts, totals, title: "Cart" });
+        await model.createCart(userID);
     } catch (error) {
         console.error("Error creating cart:", error);
-        res.status(500).json({ success: false, error: "Internal Server Error" });
+        throw error;
     }
 }
 
 async function addToCart(req, res) {
     try {
-        const cartID = req.body.cartID;
-        const productID = req.body.productID;
-        const quantity = req.body.quantity;
-        await model.addToCart(cartID, productID, quantity);
+        const { productID } = req.params;
+        const { quantity } = req.body;
+        const userID = req.user.id;
+        await model.addToCart(userID, productID, quantity);
         res.status(201).json({ success: true, message: "Product added to cart successfully" });
     } catch (error) {
         console.error("Error adding to cart:", error);
@@ -35,7 +29,9 @@ async function getCart(req, res) {
     try {
         const cartID = req.params.cartID;
         const cartProducts = await model.getCartProducts(cartID);
-        res.status(200).json({ success: true, cartProducts });
+
+        const totals = await calculateCartTotals(cartID);
+        res.render("cart", { cartItems: cartProducts, ...totals, title: "Cart" });
      } catch (error) {
         console.error("Error fetching cart items:", error);
         res.status(500).json({ success: false, error: "Internal Server Error" });

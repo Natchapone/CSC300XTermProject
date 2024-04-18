@@ -29,3 +29,25 @@ function pressEnter(event) {
         checkPassword();
     }
 }
+
+function addToCart(productId) {
+    fetch(`/cart/add/${productId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ quantity: 1 }) 
+    })
+    .then(response => {
+        if (response.ok) {
+           
+            console.log('Product added to cart successfully');
+        } else {
+           
+            console.error('Failed to add product to cart');
+        }
+    })
+    .catch(error => {
+        console.error('Error adding product to cart:', error);
+    });
+}

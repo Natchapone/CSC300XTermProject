@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const userController = require("../controllers/user.controller");
+const cartController = require("../controllers/cart.controller");
 
 router.get(
     "/google",
@@ -27,8 +28,9 @@ router.get(
 
         const email = req.user.emails[0].value;
         const name = req.user.displayName;
+        const userID = await userController.addUser(email, name);
         
-        await userController.addUser(email, name);
+        await cartController.createCart(userID);
 
         req.session.returnTo = "/";
         res.redirect(req.session.returnTo);
@@ -41,7 +43,7 @@ router.get(
 
 router.get("/login", (req, res) => {
  //console.log("=====" + req.session.returnTo)
-    res.render("products");
+    res.render("login");
 });
 
 router.get("/logout", function (req, res, next) {
