@@ -141,7 +141,7 @@ async function bulkUpload(req, res, next) {
           return res.status(400).send("Invalid JSON format.");
         }
 
-        console.log('JSON data:', jsonData); // Log the JSON data here
+        console.log('JSON data:', jsonData);
 
         const insertStmt = db.prepare("INSERT INTO products (product_name, description, imagepath, price, catID) VALUES (?, ?, ?, ?, ?)");
 
