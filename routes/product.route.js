@@ -13,8 +13,8 @@ router.post("/item/:id/delete", ensureAuth, productController.deleteProduct); //
 router.get("/search", ensureAuth, productController.searchByName); // Route to handle product search
 router.get("/inventory", ensureAuth, productController.renderInventory);
 router.post("/add", ensureAuth, productController.addNewProduct);
-router.get("/bulkUpload", ensureAuth, productController.renderBulkUploadPage);
-router.post("/bulkUpload", ensureAuth, productController.bulkUpload);
+router.get("/bulkUpload", productController.renderBulkUploadPage);
+router.post("/bulkUpload", productController.bulkUpload);
 
 
 function ensureAuth(req, res, next) {
