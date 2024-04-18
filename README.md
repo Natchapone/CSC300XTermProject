@@ -1,1 +1,4 @@
 # CSC300XTermProject
+Welcome to Lawn Supply!
+
+We have a functioning google auth that is required to access any function within our website and an admin page located at the footer of each page that is secured by a password (Password is "pass"). You may sign-in and log out as you please but you will need to log in again to access our functionality. The search bar will search for any product based off of the term a user inputs and if we don't have the term you're looking for, the html will tell you. We have a functioning products page as well that connects to the database and can be updated at anytime by the admin through their page. If you click on a product it will display their description, price, and an add to cart button (which doesn't have functionality yet sadly). Also, on the home page are our three categories and if you select one, it will filter our products page and display whatever category of products you have selected.
