@@ -1,0 +1,18 @@
+{
+    "products": [
+        {
+            "product_name": "Push Mower",
+            "description": "Manual push mower",
+            "imagepath": "https://cdn-tp3.mozu.com/24645-37138/cms/37138/files/e3c2d593-84e1-4eb5-b435-c8117b66198c?quality=60&_mzcb=_1586375036214",
+            "price": 222,
+            "catID": 1
+        },
+        {
+            "product_name": "Self Propelling Mower",
+            "description": "Automatic push mower",
+            "imagepath": "https://mobileimages.lowes.com/productimages/dcb03f36-e5ab-4ac3-a49c-21af7ffadd4f/00542554.jpg",
+            "price": 500,
+            "catID": 1
+        }
+    ]
+}

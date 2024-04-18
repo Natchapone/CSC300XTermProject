@@ -16,8 +16,13 @@ function run(sql, ...params) {
   return db.prepare(sql).run(...params);
 }
 
+function prepare(sql) {
+  return db.prepare(sql);
+}
+
 module.exports = {
   all,
   get,
   run,
+  prepare,
 };

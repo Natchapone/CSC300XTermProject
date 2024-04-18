@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Lawn Supply</title>
+    <link rel="stylesheet" href="/styles/inventory.css" />
+</head>
+
+<body>
+
+    <%- include('./partials/admin-head') %>
+
+        <div class="uploadBox">
+
+            <h1>Upload Product Data</h1>
+            <h2>Accepted file type: JSON</h2>
+            <h2>Example Format:</h2>
+
+            <!--format example-->
+            <pre>
+                {
+                    "products": [
+                        {
+                            "productID": 9,
+                            "catID": 1,
+                            "product_name": "Push Mower",
+                            "price": 222,
+                            "description": "Munual push mower",
+                            "imagepath": "https://cdn-tp3.mozu.com/24645-37138/cms/37138/files/e3c2d593-84e1-4eb5-b435-c8117b66198c?quality=60&_mzcb=_1586375036214"
+                        },
+                        {
+                            "productID": 11,
+                            "catID": 1,
+                            "product_name": "Self Propelling Mower",
+                            "price": 500,
+                            "description": "Automatic push mower",
+                            "imagepath": "https://mobileimages.lowes.com/productimages/dcb03f36-e5ab-4ac3-a49c-21af7ffadd4f/00542554.jpg"
+                        }
+                    ]
+                }           
+        </pre>
+
+            <form action="/products/upload" method="post" enctype="multipart/form-data">
+                <label for="file">Select a file:</label>
+                <input type="file" id="file" name="file" accept=".json"><br><br>
+                <input type="submit" value="Upload">
+            </form>
+
+        </div>
+</body>
+
+</html>

@@ -3,9 +3,10 @@ const express = require("express");
 const multer = require("multer");
 const app = express();
 const path = require("path");
-app.use(multer().none());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+const upload = multer({ dest: "uploads/" });
 
 //auth
 const session = require('express-session');
@@ -20,6 +21,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/auth', require('./auth/auth.route'));
 
+const productController = require("./controllers/product.controller");
+
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,7 +32,7 @@ const cartRouter = require("./routes/cart.route");
 app.use("/products", productRouter);
 app.use("/cart", cartRouter);
 
-
+app.post("/products/upload", upload.single("file"), productController.bulkUpload);
 
 app.get("/products", (req, res) => {
   res.render("products");

@@ -1,6 +1,10 @@
 "use strict";
 
 const model = require("../models/product.model");
+const multer = require("multer");
+const fs = require("fs");
+const db = require("../models/db-conn");
+const upload = multer({ dest: "uploads/" });
 
 async function getAll(req, res, next) {
   try {
@@ -112,6 +116,53 @@ async function deleteProduct(req, res, next) {
   }
 }
 
+function renderBulkUploadPage(req, res) {
+  res.render("bulkUpload", { title: "Bulk Upload" });
+}
+
+async function bulkUpload(req, res, next) {
+  try {
+    if (!req.file) {
+      return res.status(400).send("No file uploaded.");
+    }
+
+    const filePath = req.file.path;
+
+    fs.readFile(filePath, 'utf8', async (err, data) => {
+      if (err) {
+        console.error("Error reading file:", err);
+        return res.status(500).send("Error reading file.");
+      }
+
+      try {
+        const jsonData = JSON.parse(data);
+
+        if (!jsonData.products || !Array.isArray(jsonData.products)) {
+          return res.status(400).send("Invalid JSON format.");
+        }
+
+        console.log('JSON data:', jsonData); // Log the JSON data here
+
+        const insertStmt = db.prepare("INSERT INTO products (product_name, description, imagepath, price, catID) VALUES (?, ?, ?, ?, ?)");
+
+        for (const product of jsonData.products) {
+          await insertStmt.run(product.product_name, product.description, product.imagepath, product.price, product.catID);
+        }
+
+        fs.unlinkSync(filePath);
+
+        res.redirect("/products/inventory");
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+        res.status(500).send("Internal Server Error");
+      }
+    });
+  } catch (error) {
+    console.error("Error during bulk upload:", error);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
 module.exports = {
   getAll,
   getAllByCategory,
@@ -122,4 +173,6 @@ module.exports = {
   getItemDetails,
   updateProduct,
   deleteProduct,
+  renderBulkUploadPage,
+  bulkUpload,
 };

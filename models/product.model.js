@@ -1,5 +1,6 @@
 "use strict";
 const db = require("../models/db-conn");
+const fs = require("fs");
 
 function getAll() {
   let sql = "SELECT products.*, categories.cat_name FROM products JOIN categories ON products.catID = categories.catID;";
@@ -38,6 +39,20 @@ function deleteProduct(productId) {
   return db.run("DELETE FROM products WHERE productID = ?", productId);
 }
 
+async function bulkUpload(products) {
+  try {
+    const insertStmt = db.prepare("INSERT INTO products (productID, product_name, description, imagepath, price, catID) VALUES (?, ?, ?, ?, ?, ?)");
+
+    for (const product of products) {
+      await insertStmt.run(product.productID, product.product_name, product.description, product.imagepath, product.price, product.catID);
+    }
+
+    return "Bulk upload successful!";
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   getAll,
   getAllByCategory,
@@ -46,4 +61,5 @@ module.exports = {
   addNewProduct,
   updateProduct,
   deleteProduct,
+  bulkUpload,
 };
