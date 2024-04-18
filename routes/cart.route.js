@@ -3,8 +3,17 @@ const express = require("express");
 const router = express.Router();
 const cartController = require("../controllers/cart.controller");
 
-router.post("/", cartController.createCart);
-router.post("/add", cartController.addToCart);
-router.get("/cart", cartController.getCart);
+router.post("/", ensureAuth, cartController.createCart);
+router.post("/add/:productID", ensureAuth, cartController.addToCart);
+router.get("/cart", ensureAuth, cartController.getCart);
+
+function ensureAuth(req, res, next) {
+    req.session.returnTo = req.originalUrl;
+    if (!req.isAuthenticated()) {
+      return res.redirect('/auth/login');
+    }
+    console.log("$$$$$" + req.session.returnTo)
+    next();
+  }
 
 module.exports = router;
