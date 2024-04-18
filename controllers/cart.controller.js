@@ -16,7 +16,7 @@ async function addToCart(req, res) {
     try {
         const { productID } = req.params;
         const { quantity } = req.body;
-        const userID = req.user.id;
+        const userID = 18;
         await model.addToCart(userID, productID, quantity);
         res.status(201).json({ success: true, message: "Product added to cart successfully" });
     } catch (error) {
