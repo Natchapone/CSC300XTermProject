@@ -6,8 +6,7 @@ async function addUser(email, name) {
         let sql = "INSERT INTO users (email, username, created) VALUES (?,?,?);";
         let created = new Date().toLocaleDateString('en-US');
         const params = [email, name, created];
-        const newUser = await db.run(sql, params);
-        return newUser.lastID;
+         await db.run(sql, params);
     } catch (error) {
         console.error("Error creating user:", error);
         throw error;

@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS "products" (
 	"price"	REAL NOT NULL,
 	"catID"	INTEGER NOT NULL,
 	"featured"	BLOB,
-	PRIMARY KEY("productID" AUTOINCREMENT),
+	PRIMARY KEY("productID"),
 	FOREIGN KEY("catID") REFERENCES "categories"("catID")
 );
 CREATE TABLE IF NOT EXISTS "users" (
