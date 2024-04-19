@@ -29,8 +29,19 @@ async function createUser(req, res) {
     }
 }
 
+async function getUserIDByEmail(email) {
+    try {
+    const user = await model.getUserIDByEmail(email);
+    return user ? user.userID : null;
+    } catch (error) {
+        console.error("Error fetching user ID:", error);
+        throw error;
+    }
+}
+
 
 module.exports = {
     addUser,
     createUser,
+    getUserIDByEmail,
 };

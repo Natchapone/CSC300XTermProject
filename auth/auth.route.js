@@ -28,7 +28,7 @@ router.get(
 
         const email = req.user.emails[0].value;
         const name = req.user.displayName;
-        const userID = await userController.addUser(email, name);
+        const userID = await userController.getUserIDByEmail(email);
         
         await cartController.createCart(userID);
 
