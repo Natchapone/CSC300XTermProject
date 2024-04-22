@@ -143,10 +143,10 @@ async function bulkUpload(req, res, next) {
 
         console.log('JSON data:', jsonData);
 
-        const insertStmt = db.prepare("INSERT INTO products (product_name, description, imagepath, price, catID) VALUES (?, ?, ?, ?, ?)");
+        const insertStmt = db.prepare("INSERT INTO products (productID, product_name, description, imagepath, price, catID) VALUES (?, ?, ?, ?, ?, ?)");
 
         for (const product of jsonData.products) {
-          await insertStmt.run(product.product_name, product.description, product.imagepath, product.price, product.catID);
+          await insertStmt.run(product.productID, product.product_name, product.description, product.imagepath, product.price, product.catID);
         }
 
         fs.unlinkSync(filePath);

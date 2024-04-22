@@ -26,8 +26,8 @@ function search(params) {
 };
 
 function addNewProduct(id, name, category, price, imgpath, description) {
-  let sql = "INSERT INTO products (product_name, description, imagepath, price, catID) VALUES (?, ?, ?, ?, (SELECT catID FROM categories WHERE cat_name = ?))";
-  db.run(sql, name, description, imgpath, price, category);
+  let sql = "INSERT INTO products (productID, product_name, description, imagepath, price, catID) VALUES (?, ?, ?, ?, ?, (SELECT catID FROM categories WHERE cat_name = ?))";
+  db.run(sql, id, name, description, imgpath, price, category);
 };
 
 function updateProduct(id, name, description, category, imgpath, price) {
