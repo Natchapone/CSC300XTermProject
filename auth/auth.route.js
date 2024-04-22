@@ -28,7 +28,9 @@ router.get(
 
         const email = req.user.emails[0].value;
         const name = req.user.displayName;
-        const userID = await userController.addUser(email, name);
+        await userController.addUser(email, name);
+
+        const userID = await userController.getUserIDByEmail(email);
         
         await cartController.createCart(userID);
 
@@ -38,6 +40,9 @@ router.get(
             console.error('Error adding user:', error);
         res.status(500).send('Internal Server Error');
         }
+        
+        
+
     }
 );
 
