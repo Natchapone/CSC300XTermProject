@@ -23,19 +23,27 @@ router.get(
     }),
     async (req, res) => {
         try {
-        console.log("Google authentication successful!");
-        console.log("User:", req.user);
+            console.log("Google authentication successful!");
+            console.log("User:", req.user);
 
-        const email = req.user.emails[0].value;
-        const name = req.user.displayName;
-        await userController.addUser(email, name);
+            const email = req.user.emails[0].value;
+            const name = req.user.displayName;
 
-        const userID = await userController.getUserIDByEmail(email);
-        
-        await cartController.createCart(userID);
+            // Step 1: Add user
+            await userController.addUser(email, name);
+            console.log("Adding user with email:", email);
 
-        req.session.returnTo = "/";
-        res.redirect(req.session.returnTo);
+            // Step 2: Retrieve userID
+            const userID = await userController.getUserIDByEmail(email);
+            console.log("Retrieving userID for email:", email);
+            console.log("Retrieved userID:", userID);
+
+            // Step 3: Create cart
+            await cartController.createCart(userID);
+            console.log("Cart created for user with ID:", userID);
+
+            req.session.returnTo = "/";
+            res.redirect(req.session.returnTo);
         } catch (error) {
             console.error('Error adding user:', error);
         res.status(500).send('Internal Server Error');

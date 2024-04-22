@@ -17,18 +17,27 @@ async function createCart(userID) {
 
 }
 
-async function addToCart(userID, productID, quantity) {
+async function addToCart(cartID, productID, quantity) {
     return new Promise((resolve, reject) => {
-    const sql = "INSERT INTO cartProducts (userID, productID, quantity) VALUES (?, ?, ?);";
-    const params = [userID, productID, quantity];
-    db.run(sql, params, function(err) {
-        if (err) {
-            reject(err);
-        } else {
-            resolve(this.lastID);
-        }
+        // Here, you need to retrieve the userID based on the cartID
+        let sql = "SELECT userID FROM carts WHERE cartID = ?;";
+        db.get(sql, [cartID], function(err, row) {
+            if (err) {
+                reject(err);
+            } else {
+                const userID = row.userID;
+                const sql = "INSERT INTO cartProducts (cartID, productID, quantity) VALUES (?, ?, ?);";
+                const params = [cartID, productID, quantity];
+                db.run(sql, params, function(err) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(this.lastID);
+                    }
+                });
+            }
+        });
     });
-});
 }
 
 function getCartProducts(cartID) {

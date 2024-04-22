@@ -14,11 +14,11 @@ async function createCart(userID) {
 
 async function addToCart(req, res) {
     try {
-        const { productID } = req.params;
-        const { quantity } = req.body;
-        const userID = 18;
-        await model.addToCart(userID, productID, quantity);
-        res.status(201).json({ success: true, message: "Product added to cart successfully" });
+    const { productID } = req.params;
+    const { quantity } = req.body;
+    const cartID = req.user.cartID; // Assuming the cartID is stored in req.user
+    await model.addToCart(cartID, productID, quantity); // Pass cartID instead of userID
+    res.status(201).json({ success: true, message: "Product added to cart successfully" });
     } catch (error) {
         console.error("Error adding to cart:", error);
         res.status(500).json({ success: false, error: "Internal Server Error" });

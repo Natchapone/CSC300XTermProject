@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS "carts" (
 	"cartID"	INTEGER,
 	"status"	TEXT NOT NULL,
 	"created"	NUMERIC NOT NULL,
-	"userID"	INTEGER UNIQUE,
+	"userID"	INTEGER,
 	PRIMARY KEY("cartID" AUTOINCREMENT),
 	FOREIGN KEY("userID") REFERENCES "users"("userID")
 );
