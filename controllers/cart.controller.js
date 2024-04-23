@@ -2,7 +2,7 @@
 "use strict";
 
 const model = require("../models/cart.model");
-
+const db = require("../models/db-conn");
 async function createCart(userID) {
     try {
         await model.createCart(userID);
@@ -14,9 +14,18 @@ async function createCart(userID) {
 
 async function addToCart(req, res) {
     try {
-    const { productID } = req.params;
-    const { quantity } = req.body;
-    const cartID = req.user.cartID; // Assuming the cartID is stored in req.user
+    var productID = req.body.product_id;
+    var quantity = req.body.quantity;
+    var email = req.user.emails[0].value;
+
+    const userCartQuery = "SELECT c.cartID FROM users u INNER JOIN carts c ON u.userID = c.userID WHERE u.email = ?";
+    const userCart = await db.get(userCartQuery, email);
+    if (!userCart) {
+        console.error("No cart found for user:", email);
+        return res.status(404).json({ success: false, error: "User does not have a cart." });
+    }
+    const cartID = userCart.cartID;
+    console.log("Received request to add product:", productID, "with quantity:", quantity, "to cart:", cartID);
     await model.addToCart(cartID, productID, quantity); // Pass cartID instead of userID
     res.status(201).json({ success: true, message: "Product added to cart successfully" });
     } catch (error) {
@@ -27,15 +36,48 @@ async function addToCart(req, res) {
 
 async function getCart(req, res) {
     try {
-        const cartID = req.params.cartID;
+        var email = req.user.emails[0].value;
+        const userCartQuery = "SELECT c.cartID FROM users u INNER JOIN carts c ON u.userID = c.userID WHERE u.email = ?";
+         const userCart = await db.get(userCartQuery, email);
+    if (!userCart) {
+        console.error("No cart found for user:", email);
+        return res.status(404).json({ success: false, error: "User does not have a cart." });
+    }
+        const cartID = userCart.cartID;
         const cartProducts = await model.getCartProducts(cartID);
 
         const totals = await calculateCartTotals(cartID);
-        res.render("cart", { cartItems: cartProducts, ...totals, title: "Cart" });
+
+        res.render("cart", { 
+            cartItems: cartProducts,
+            subtotal: totals.subtotal,
+            tax: totals.tax,
+            deliveryFee: totals.deliveryFee,
+            total: totals.total,
+            title: 'Your Cart'});
      } catch (error) {
         console.error("Error fetching cart items:", error);
         res.status(500).json({ success: false, error: "Internal Server Error" });
     }
+}
+
+async function checkout(req, res) {
+    try {
+        var email = req.user.emails[0].value;
+        const userCartQuery = "SELECT c.cartID FROM users u INNER JOIN carts c ON u.userID = c.userID WHERE u.email = ?";
+         const userCart = await db.get(userCartQuery, email);
+    if (!userCart) {
+        console.error("No cart found for user:", email);
+        return res.status(404).json({ success: false, error: "User does not have a cart." });
+    }
+        const cartID = userCart.cartID;
+        await model.clearCart(cartID);
+        res.redirect("/cart/cart");
+} catch (error) {
+    console.error("Error clearing cart:", error);
+   res.status(500).json({ success: false, error: "Internal Server Error" });
+}
+
 }
 
 async function calculateCartTotals(cartID) {
@@ -60,4 +102,5 @@ module.exports = {
     createCart,
     addToCart,
     getCart,
+    checkout,
 };

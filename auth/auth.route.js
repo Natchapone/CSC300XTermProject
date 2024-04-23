@@ -36,7 +36,7 @@ router.get(
             // Step 2: Retrieve userID
             const userID = await userController.getUserIDByEmail(email);
             console.log("Retrieving userID for email:", email);
-            console.log("Retrieved userID:", userID);
+
 
             // Step 3: Create cart
             await cartController.createCart(userID);

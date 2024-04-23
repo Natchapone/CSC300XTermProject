@@ -23,9 +23,40 @@ function pressEnter(event) {
     }
 }
 
+document.getElementById("addToCartF").addEventListener("submit", function(e) {
+    e.preventDefault();
+    var productID = document.getElementById("product_id").value;
+    var quantity = document.getElementById("quantity").value;
+    var cartID = document.getElementById("cart_id").value;
+
+    fetch(`/cart/add/${productID}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            cart_id: cartID,
+            product_id: productID,
+            quantity: quantity
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error("Network response was not ok.");
+    })
+    .then(data => {
+        console.log(data); // Handle success response from server
+    })
+    .catch(error => {
+        console.error("Error:", error); // Handle error
+    });
+});
+/*
 function addToCart(productId) {
     fetch(`/cart/add/${productId}`, {
-        method: 'POST',
+     method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -34,13 +65,14 @@ function addToCart(productId) {
     .then(response => {
         if (response.ok) {
            
-            console.log('Product added to cart successfully');
-        } else {
+          console.log('Product added to cart successfully');
+       } else {
            
-            console.error('Failed to add product to cart');
+           console.error('Failed to add product to cart');
         }
     })
-    .catch(error => {
-        console.error('Error adding product to cart:', error);
-    });
+   .catch(error => {
+       console.error('Error adding product to cart:', error);
+   });
 }
+*/

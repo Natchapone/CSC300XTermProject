@@ -16,7 +16,12 @@
                             Price: $<%= product.price %>
                                 <br>
                                 <br>
-                                <button onclick ="addToCart('<%= product.productID %>')">Add to Cart</button>
+                                <form id = "addToCartF">
+                                    <input type = "hidden" id = "cart_id" name = "cart_id" value = "<%= carts.cartID %>">
+                                    <input type = "hidden" id = "product_id" name ="product_id" value ="<%= product.productID %>">
+                                    <input type = "number" id = "quantity" name = "quantity" value = "1" min = "1">
+                                    <button type = "submit">Add to Cart</button>
+                                </form>
                     </article>
                 </div>
             </div>

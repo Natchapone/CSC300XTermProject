@@ -1,6 +1,7 @@
 "use strict";
 
 const model = require("../models/product.model");
+const cModel = require("../models/cart.model");
 const multer = require("multer");
 const fs = require("fs");
 const db = require("../models/db-conn");
@@ -27,11 +28,12 @@ async function getAllByCategory(req, res) {
   }
 }
 
-function getOneById(req, res, next) {
+async function getOneById(req, res, next) {
   let id = req.params.id;
   try {
     let product = model.getOneById(id);
-    res.render("details", { product: product, title: 'Product #' + id });
+    let carts = await cModel.getCartProducts(req.session.cartID);
+    res.render("details", { product: product, carts: carts, title: 'Product #' + id });
   } catch (err) {
     console.error("Error while getting product details: ", err.message);
     next(err);
