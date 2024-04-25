@@ -59,6 +59,17 @@ async function deleteFromCart(cartID, productID) {
     }
 }
 
+async function updateQuantity(cartID, productID, quantity) {
+    try {
+        const sql = "UPDATE cartProducts SET quantity = ? WHERE cartID = ? AND productID = ?";
+        const params = [quantity, cartID, productID];
+        await db.run(sql, params);
+    } catch (error) {
+        console.error("Error updating cart item quantity:", error);
+        throw error;
+    }
+}
+
 
 module.exports = {
     createCart,
@@ -66,4 +77,5 @@ module.exports = {
     getCartProducts,
     clearCart,
     deleteFromCart,
+    updateQuantity,
 };

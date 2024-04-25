@@ -3,6 +3,7 @@
 
 const model = require("../models/cart.model");
 const db = require("../models/db-conn");
+const uModel = require("../models/user.model");
 async function createCart(userID) {
     try {
         await model.createCart(userID);
@@ -117,10 +118,36 @@ async function deleteFromCart(req, res) {
 }
 }
 
+async function updateQuantity(req, res) {
+    try {
+        var email = req.user.emails[0].value;
+        const userCartQuery = "SELECT c.cartID FROM users u INNER JOIN carts c ON u.userID = c.userID WHERE u.email = ?";
+         const userCart = await db.get(userCartQuery, email);
+    if (!userCart) {
+        console.error("No cart found for user:", email);
+        return res.status(404).json({ success: false, error: "User does not have a cart." });
+    }
+        const cartID = userCart.cartID;
+        var productID = req.params.productID;
+        const quantity = req.body.quantity;
+
+        // Update quantity of the item in the cart in the database
+        await model.updateQuantity(cartID, productID, quantity);
+
+        // Calculate new total price of the cart
+        const newTotal = await model.calculateCartTotals(cartID);
+        res.json({ total: newTotal });
+    } catch (error) {
+        console.error("Error updating cart item quantity:", error);
+        res.status(500).json({ success: false, error: "Internal Server Error" });
+    }
+}
+
 module.exports = {
     createCart,
     addToCart,
     getCart,
     checkout,
     deleteFromCart,
+    updateQuantity,
 };

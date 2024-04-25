@@ -53,26 +53,18 @@ document.getElementById("addToCartF").addEventListener("submit", function(e) {
         console.error("Error:", error); // Handle error
     });
 });
-/*
-function addToCart(productId) {
-    fetch(`/cart/add/${productId}`, {
-     method: 'POST',
+
+function updateQuantity(productID, quantity) {
+    fetch(`/cart/update/${productID}`, {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ quantity: 1 }) 
+        body: JSON.stringify({ quantity: quantity })
     })
-    .then(response => {
-        if (response.ok) {
-           
-          console.log('Product added to cart successfully');
-       } else {
-           
-           console.error('Failed to add product to cart');
-        }
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('totalAmount').innerText = data.total;
     })
-   .catch(error => {
-       console.error('Error adding product to cart:', error);
-   });
+    .catch(error => console.error('Error updating cart quantity:', error));
 }
-*/
