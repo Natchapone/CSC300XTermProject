@@ -2,16 +2,16 @@
 <link rel="stylesheet" href="/styles/cart.css" />
 <div id="containerCenter">
     <div class="shoppingCart">
-        <h id="cartHeader">
+        <h1 id="cartHeader">
             Your Cart
-        </h>
+        </h1>
         <% cartItems.forEach(item => { %>
         <div class="cartItem">
             <div id="cartImg">
                 <img id="<%= item.imagepath %>" src="<%= item.imagepath %>">
             </div>
             <div id="itemInfo">
-                <p><%= item.name %></p>
+                <p><%= item.product_name %></p>
                 <p id="price">Price: $<%= item.price %></p>
 
                 <div id="qty">
@@ -21,7 +21,6 @@
                         <button type="submit">Remove</button>
                         </form>
                         </span></p>
-                    <p id="totalPerItem">$<%= item.price %></p>
                 </div>
             </div>
         </div>
