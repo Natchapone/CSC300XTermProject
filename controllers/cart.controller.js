@@ -98,9 +98,29 @@ async function calculateCartTotals(cartID) {
     return {subtotal: subtotal.toFixed(2), tax: tax.toFixed(2), deliveryFee: deliveryFee.toFixed(2), total: total.toFixed(2)}
 }
 
+async function deleteFromCart(req, res) {
+    try {
+        var email = req.user.emails[0].value;
+        const userCartQuery = "SELECT c.cartID FROM users u INNER JOIN carts c ON u.userID = c.userID WHERE u.email = ?";
+         const userCart = await db.get(userCartQuery, email);
+    if (!userCart) {
+        console.error("No cart found for user:", email);
+        return res.status(404).json({ success: false, error: "User does not have a cart." });
+    }
+        const cartID = userCart.cartID;
+        var productID = req.params.productID;
+        await model.deleteFromCart(cartID, productID);
+        res.redirect("/cart/cart");
+} catch (error) {
+    console.error("Error deleting from cart:", error);
+   res.status(500).json({ success: false, error: "Internal Server Error" });
+}
+}
+
 module.exports = {
     createCart,
     addToCart,
     getCart,
     checkout,
+    deleteFromCart,
 };

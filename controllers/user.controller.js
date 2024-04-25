@@ -2,13 +2,13 @@
 "use strict";
 
 const model = require("../models/user.model");
-const cModel = require("../models/cart.model");
+
 
 async function addUser(email, name) {
    try {
     const userID = await model.addUser(email, name);
     console.log("User added:", userID);
-    return userID; // Return the user ID
+    return userID; 
    } catch (error) {
     console.error("Error creating user:", error);
     throw error;

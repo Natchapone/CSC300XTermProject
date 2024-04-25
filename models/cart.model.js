@@ -48,10 +48,22 @@ function getCartProducts(cartID) {
     }
 }
 
+async function deleteFromCart(cartID, productID) {
+    try {
+    let sql = 'DELETE FROM cartProducts WHERE cartID =? AND productID =?';
+    const params = [cartID, productID];
+    await db.run(sql, params);
+    } catch (error) {
+        console.error("Error deleting from cart:", error);
+        throw error;
+    }
+}
+
 
 module.exports = {
     createCart,
     addToCart,
     getCartProducts,
     clearCart,
+    deleteFromCart,
 };

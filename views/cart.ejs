@@ -16,8 +16,10 @@
 
                 <div id="qty">
                     <p> Qty <span class="qtyBox"><input type="text" value="<%= item.quantity %>">
-                            <button type="submit">Confirm</button>
-                            <button type="submit">Remove</button>
+                       <form action = "/cart/delete/<%= item.productID %>" method="POST">
+                        <input type = "hidden" name ="productID" value = "<%= item.productID %>">
+                        <button type="submit">Remove</button>
+                        </form>
                         </span></p>
                     <p id="totalPerItem">$<%= item.price %></p>
                 </div>
