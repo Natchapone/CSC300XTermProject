@@ -147,11 +147,14 @@ article {
     display: flex;
     padding-left: 610px;
     width: 250px;
-    
+
 
 }
+
 .splashbox {
     border-top: 1px solid gray;
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
 }
 
 
@@ -315,4 +318,17 @@ footer a:visited,
 
 #error-message {
     color: red;
+}
+
+/* Adjustments for smaller screens */
+@media only screen and (max-width: 768px) {
+    .pbox {
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .pbox {
+        width: 100%;
+    }
 }
