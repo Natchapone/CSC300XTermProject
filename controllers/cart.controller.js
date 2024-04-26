@@ -96,7 +96,7 @@ async function calculateCartTotals(cartID) {
     const deliveryFee = 15;
     const total = subtotal + NCTax + deliveryFee;
 
-    return {subtotal: subtotal.toFixed(2), tax: tax.toFixed(2), deliveryFee: deliveryFee.toFixed(2), total: total.toFixed(2)}
+    return {subtotal: subtotal.toFixed(2), tax: NCTax.toFixed(2), deliveryFee: deliveryFee.toFixed(2), total: total.toFixed(2)}
 }
 
 async function deleteFromCart(req, res) {
@@ -135,7 +135,6 @@ async function updateQuantity(req, res) {
         await model.updateQuantity(cartID, productID, quantity);
 
         // Calculate new total price of the cart
-        res.json({ total: newTotal });
         res.redirect("/cart/cart");
     } catch (error) {
         console.error("Error updating cart item quantity:", error);
