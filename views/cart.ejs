@@ -1,62 +1,131 @@
-<%- include('./partials/head') %>
-<link rel="stylesheet" href="/styles/cart.css" />
-    <div id="containerCenter">
-        <div class="shoppingCart">
-            <h1 id="cartHeader">
-                Your Cart
-            </h1>
-            <% cartItems.forEach(item=> { %>
-                <div class="cartItem">
-                    <div id="cartImg">
-                        <img id="<%= item.imagepath %>" src="<%= item.imagepath %>">
-                    </div>
-                    <div id="itemInfo">
-                        <p>
-                            <%= item.product_name %>
-                        </p>
-                        <p id="price">Price: $<%= item.price %>
-                        </p>
+<!DOCTYPE html>
+<html lang="en">
 
-                        <div id="qty">
-                            <input type="text" value="<%= item.quantity %>" onchange="updateQuantity('<%= item.productID %>', this.value)">
-                            <form action="/cart/delete/<%= item.productID %>" method="POST">
-                                <input type="hidden" name="productID" value="<%= item.productID %>">
-                                <button type="submit">Remove</button>
-                            </form>
-                            </p>
-                        </div>
-                    </div>
+<head>
+    <meta charset="utf-8">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/styles/cart.css" />
+    <script src="/scripts/MVCscript.js" defer></script>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="content-wrap">
+            <header class="product">
+                <div class="logo">
+                    <p>Lawn Supply</p>
                 </div>
-                <% }); %>
 
-                    <div id="total">
-                        <div id="totalTxt">
-                            <div id="category">Subtotal:</div>
-                            <div id="category">Tax - 6.75%:</div>
-                            <div id="category">Delivery Fee:</div>
-                            <div id="category">Total:</div>
+                <form action="/products/search" method="GET" class="searchbar">
+                    <input type="text" placeholder="Search for products..." name="term">
+                    <button type="submit"><img src="/images/search.png"></button>
+                </form>
 
+
+                <nav class="navigation">
+                    <ul class="navbar">
+                        <li class="navitem"><a class="navlink" href="/">Home</a></li>
+                        <li class="navitem"><a class="navlink" href="/auth/google">Sign In</a></li>
+                        <li class="navitem"><a class="navlink" href="/auth/logout">Log Out</a></li>
+                        <li class="navitem"><a class="navlink" href="/products">Products</a></li>
+                        <li class="navitem"><a class="navlink" href="/cart/cart">Cart</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <div id="containerCenter">
+                <div class="shoppingCart">
+                    <h1 id="cartHeader">
+                        Your Cart
+                    </h1>
+                    <% cartItems.forEach(item=> { %>
+                        <div class="cartItem">
+                            <div id="cartImg">
+                                <img id="<%= item.imagepath %>" src="<%= item.imagepath %>">
+                            </div>
+                            <div id="itemInfo">
+                                <p>
+                                    <%= item.product_name %>
+                                </p>
+                                <p id="price">Price: $<%= item.price %>
+                                </p>
+
+                                <div id="qty">
+                                    <input id="qtyBox" type="text" value="<%= item.quantity %>"
+                                        onchange="updateQuantity('<%= item.productID %>', this.value)">
+                                    <form action="/cart/delete/<%= item.productID %>" method="POST">
+                                        <input type="hidden" name="productID" value="<%= item.productID %>">
+                                        <button type="submit">Remove</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div id="totalNum">
-                            <div id="amount">$<%= subtotal %>
-                            </div>
-                            <div id="amount">$<%= tax %>
-                            </div>
-                            <div id="amount">$<%= deliveryFee %>
-                            </div>
-                            <div id="amount">$<%= total %>
-                            </div>
-                        </div>
-                    </div>
+                        <% }); %>
 
-                    <div id="checkout">
-                        <form action="/cart/checkout" method="POST">
-                            <button type="submit">Check Out</button>
-                        </form>
-                    </div>
+                            <div id="total">
+                                <div id="totalTxt">
+                                    <div id="category">Subtotal:</div>
+                                    <div id="category">Tax - 6.75%:</div>
+                                    <div id="category">Delivery Fee:</div>
+                                    <div id="category">Total:</div>
 
+                                </div>
+                                <div id="totalNum">
+                                    <div id="amount">$<%= subtotal %>
+                                    </div>
+                                    <div id="amount">$<%= tax %>
+                                    </div>
+                                    <div id="amount">$<%= deliveryFee %>
+                                    </div>
+                                    <div id="amount">$<%= total %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="checkout">
+                                <form action="/cart/checkout" method="POST">
+                                    <button type="submit">Check Out</button>
+                                </form>
+                            </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <div id="footer-inner">
+                <div class="foot">
+                    LAWN SUPPLY
+                    <div class="foot1"> <a href="#">Contact Us </a></div>
+                </div>
+
+                <pre>
+            Copyright &#169; 2024 Lawn Supply
+                     All rights reserved
+                </pre>
+                <div class="social">
+                    <a class="facebook" href="#"><img src="/images/facebook-icon.png" alt="face"></a>
+                    <a class="IG" href="#"><img src="/images/IG-icon.png" alt="IG"></a>
+                    <a class="Twitter" href="#"><img src="/images/twitter-icon.png" alt="Twitter"></a>
+                </div>
+
+                <a href="/products/productEdit" onclick="confirmAdmin(); return false;">Admin Products Edit</a>
+            </div>
+        </footer>
+
+        <div id="conWindow" class="conWindow">
+            <div class="conWindow-content">
+                <span class="closeWindow" onclick="closeConfirm();">&times;</span>
+                <h2>Enter Admin Password</h2>
+                <input type="password" id="password" placeholder="Enter password" onkeypress="pressEnter(event)">
+                <button onclick="checkPassword();">Submit</button>
+                <p id="error-message"></p>
+            </div>
         </div>
 
-</div>
-<%- include('./partials/footer') %>
+    </div>
+    </div>
+</body>
 
+</html>

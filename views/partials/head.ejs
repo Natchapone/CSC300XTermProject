@@ -8,31 +8,30 @@
     </title>
     <link rel="stylesheet" href="/styles/styles.css" />
     <script src="/scripts/MVCscript.js" defer></script>
-   
+
 </head>
 
 <body>
-    <header class="product">
-        <div class="logo">
-            <p>Lawn Supply</p>
-        </div>
-
-       <form action="/products/search" method="GET" class="searchbar">
-            <input type="text" placeholder="Search for products..." name="term">
-            <button type="submit"><img src="/images/search.png"></button>
-        </form> 
-
-
-        <nav class="navigation">
-            <ul class="navbar">
-                <li class="navitem"><a class="navlink" href="/">Home</a></li>
-                <li class="navitem"><a class="navlink" href="/auth/google">Sign In</a></li>
-                <li class="navitem"><a class="navlink" href="/auth/logout">Log Out</a></li>
-                <li class="navitem"><a class="navlink" href="/products">Products</a></li>
-                <li class="navitem"><a class="navlink" href="/cart/cart">Cart</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <div id="container">
-        <div id="container-wrap">
+        <div id="content-wrap">
+            <header class="product">
+                <div class="logo">
+                    <p>Lawn Supply</p>
+                </div>
+
+                <form action="/products/search" method="GET" class="searchbar">
+                    <input type="text" placeholder="Search for products..." name="term">
+                    <button type="submit"><img src="/images/search.png"></button>
+                </form>
+
+
+                <nav class="navigation">
+                    <ul class="navbar">
+                        <li class="navitem"><a class="navlink" href="/">Home</a></li>
+                        <li class="navitem"><a class="navlink" href="/auth/google">Sign In</a></li>
+                        <li class="navitem"><a class="navlink" href="/auth/logout">Log Out</a></li>
+                        <li class="navitem"><a class="navlink" href="/products">Products</a></li>
+                        <li class="navitem"><a class="navlink" href="/cart/cart">Cart</a></li>
+                    </ul>
+                </nav>
+            </header>
