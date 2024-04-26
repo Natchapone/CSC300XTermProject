@@ -135,8 +135,8 @@ async function updateQuantity(req, res) {
         await model.updateQuantity(cartID, productID, quantity);
 
         // Calculate new total price of the cart
-        const newTotal = await model.calculateCartTotals(cartID);
         res.json({ total: newTotal });
+        res.redirect("/cart/cart");
     } catch (error) {
         console.error("Error updating cart item quantity:", error);
         res.status(500).json({ success: false, error: "Internal Server Error" });
