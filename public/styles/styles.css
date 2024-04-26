@@ -320,6 +320,10 @@ footer a:visited,
     color: red;
 }
 
+#quantity {
+    width: 22px;
+}
+
 /* Adjustments for smaller screens */
 @media only screen and (max-width: 768px) {
     .pbox {

@@ -56,7 +56,7 @@
                                 <div id="qty">
                                     <input id="qtyBox" type="text" value="<%= item.quantity %>"
                                         onchange="updateQuantity('<%= item.productID %>', this.value)">
-                                    <form action="/cart/delete/<%= item.productID %>" method="POST">
+                                    <form id="removebtn" action="/cart/delete/<%= item.productID %>" method="POST">
                                         <input type="hidden" name="productID" value="<%= item.productID %>">
                                         <button type="submit">Remove</button>
                                     </form>
