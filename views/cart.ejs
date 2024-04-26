@@ -92,41 +92,38 @@
                             </div>
                 </div>
             </div>
-        </div>
-        <footer id="footer">
-            <div id="footer-inner">
-                <div class="foot">
-                    LAWN SUPPLY
-                    <div class="foot1"> <a href="#">Contact Us </a></div>
+            <footer id="footer">
+                <div id="footer-inner">
+                    <div class="foot">
+                        LAWN SUPPLY
+                        <div class="foot1"> <a href="#">Contact Us </a></div>
+                    </div>
+
+                    <pre>
+        Copyright &#169; 2024 Lawn Supply
+                 All rights reserved
+            </pre>
+                    <div class="social">
+                        <a class="facebook" href="#"><img src="/images/facebook-icon.png" alt="face"></a>
+                        <a class="IG" href="#"><img src="/images/IG-icon.png" alt="IG"></a>
+                        <a class="Twitter" href="#"><img src="/images/twitter-icon.png" alt="Twitter"></a>
+                    </div>
+
+                    <a href="/products/productEdit" onclick="confirmAdmin(); return false;">Admin Products Edit</a>
                 </div>
+            </footer>
 
-                <pre>
-            Copyright &#169; 2024 Lawn Supply
-                     All rights reserved
-                </pre>
-                <div class="social">
-                    <a class="facebook" href="#"><img src="/images/facebook-icon.png" alt="face"></a>
-                    <a class="IG" href="#"><img src="/images/IG-icon.png" alt="IG"></a>
-                    <a class="Twitter" href="#"><img src="/images/twitter-icon.png" alt="Twitter"></a>
+            <div id="conWindow" class="conWindow">
+                <div class="conWindow-content">
+                    <span class="closeWindow" onclick="closeConfirm();">&times;</span>
+                    <h2>Enter Admin Password</h2>
+                    <input type="password" id="password" placeholder="Enter password" onkeypress="pressEnter(event)">
+                    <button onclick="checkPassword();">Submit</button>
+                    <p id="error-message"></p>
                 </div>
-
-                <a href="/products/productEdit" onclick="confirmAdmin(); return false;">Admin Products Edit</a>
-            </div>
-        </footer>
-
-        <div id="conWindow" class="conWindow">
-            <div class="conWindow-content">
-                <span class="closeWindow" onclick="closeConfirm();">&times;</span>
-                <h2>Enter Admin Password</h2>
-                <input type="password" id="password" placeholder="Enter password" onkeypress="pressEnter(event)">
-                <button onclick="checkPassword();">Submit</button>
-                <p id="error-message"></p>
             </div>
         </div>
-
-</div>
-</div>
-</div>
-<%- include('./partials/footer') %>
+    </div>
+</body>
 
 </html>
